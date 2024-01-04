@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #3498db;
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+            width: 80%; /* Adjust input width for smaller screens */
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        /* Media query for smaller screens */
+        @media only screen and (max-width: 600px) {
+            input {
+                width: 100%; /* Full width for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Number Guessing Game</h1>
+    <p>Guess a number between 1 and 100:</p>
+    <input type="number" id="guessInput">
+    <button onclick="checkGuess()">Submit Guess</button>
+    <div id="result"></div>
+
+    <script>
+        // Generate a random number between 1 and 10
+        const randomNumber = Math.floor(Math.random() * 100) + 1;
+
+        function checkGuess() {
+            // Get the user's guess
+            const userGuess = parseInt(document.getElementById("guessInput").value);
+
+            // Check if the guess is correct
+            if (!isNaN(userGuess)) {
+                if (userGuess === 37) {
+                    displayResult("Congratulations! You guessed the correct number!");
+                } else {
+                    displayResult(`Wrong guess. The correct number was ${37}. Try again!`);
+                }
+            } else {
+                displayResult("Please enter a valid number.");
+            }
+        }
+
+        function displayResult(message) {
+            document.getElementById("result").innerText = message;
+        }
+    </script>
+</body>
+</html>
